@@ -3,8 +3,6 @@
  */
 export const AppComponent = {
   template: `
-    <div>
-      hello world
-    </div>
+    <h1>Hello World!</h1>
   `
 };

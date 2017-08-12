@@ -9,6 +9,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.(css|scss)$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
