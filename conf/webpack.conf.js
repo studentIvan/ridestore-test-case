@@ -50,6 +50,11 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: "vendors.js",
+      minChunks: Infinity,
+    }),
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
     }),
@@ -61,9 +66,13 @@ module.exports = {
     })
   ],
   devtool: 'source-map',
+  entry: {
+    app: `./${conf.path.src('index')}`,
+    vendor: `./${conf.path.src('vendors')}`,
+  },
   output: {
     path: path.join(process.cwd(), conf.paths.tmp),
-    filename: 'index.js'
+    filename: 'index.js',
+    chunkFilename: '[id].[hash].chunk.js'
   },
-  entry: `./${conf.path.src('index')}`
 };
