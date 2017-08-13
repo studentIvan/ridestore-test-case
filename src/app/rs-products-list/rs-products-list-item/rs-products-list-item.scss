@@ -1,0 +1,22 @@
+.rs-product-preview {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+
+  &__image img {
+    width: 170px;
+    height: 200px;
+  }
+
+  &__title {
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__price {
+    font-weight: bold;
+  }
+}
