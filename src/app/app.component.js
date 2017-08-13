@@ -9,8 +9,14 @@ export const AppComponent = {
       </nav>
     </header>
     <div class="container-fluid">
-      <h1>Hello World!</h1>
-      <ridestore-products-list category-id="208"></ridestore-products-list>
+      <ridestore-products-list ng-if="$ctrl.categoryId" category-id="$ctrl.categoryId"></ridestore-products-list>
     </div>
-  `
+  `,
+  controller($log, $stateParams, $timeout) {
+    'ngInject';
+
+    $timeout(() => {
+      this.categoryId = parseInt($stateParams.categoryId || 208, 10);
+    });
+  }
 };
