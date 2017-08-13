@@ -1,0 +1,8 @@
+<div class="rs-products row">
+  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12" ng-repeat="product in $ctrl.products">
+    <ridestore-products-list-item product="product"></ridestore-products-list-item>
+  </div>
+  <div class="col-12" ng-if="!$ctrl.products.length">
+    Loading products list from server ...
+  </div>
+</div>
