@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.6",
     "angular": "^1.6.2",
-    "angular-resource": "^1.6.5"
+    "angular-resource": "^1.6.5",
+    "bootstrap": "^4.0.0-beta"
   },
   "devDependencies": {
     "@types/angular": "^1.6.6",
