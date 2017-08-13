@@ -3,5 +3,7 @@
  */
 import angular from 'angular';
 import ngResource from 'angular-resource';
+import uiRouter from '@uirouter/angularjs';
+import 'bootstrap/scss/bootstrap.scss';
 
-export { angular, ngResource };
+export { angular, ngResource, uiRouter };
