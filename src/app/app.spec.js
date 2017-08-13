@@ -1,11 +1,12 @@
 import angular from 'angular';
+import uiRouter from '@uirouter/angularjs';
 import 'angular-mocks';
 import { AppComponent } from './app.component';
 
 describe('app component', () => {
   beforeEach(() => {
     angular
-      .module('app', [])
+      .module('app', [uiRouter])
       .component('app', AppComponent);
     angular.mock.module('app');
   });
