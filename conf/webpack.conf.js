@@ -4,6 +4,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FailPlugin = require('webpack-fail-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -23,12 +24,10 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          'postcss-loader'
-        ]
+        loaders: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?minimize!sass-loader!postcss-loader'
+        })
       },
       {
         test: /\.js$/,
@@ -58,6 +57,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
     }),
+    new ExtractTextPlugin('index-[contenthash].css'),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: () => [autoprefixer]
