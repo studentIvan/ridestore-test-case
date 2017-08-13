@@ -2,6 +2,9 @@ import template from './rs-products-list.html';
 
 export const RidestoreProductsListComponent = {
   template,
+  bindings: {
+    categoryId: '='
+  },
   controller: class RidestoreProductsListComponent {
     /**
      * @typedef {{
@@ -18,28 +21,15 @@ export const RidestoreProductsListComponent = {
         getCategory: (categoryId: number) => angular.IPromise<RidestoreCategory>
       }} RidestoreCategoryService
     *
-    * @param {angular.ILogService} $log
-    * @param {angular.IAttributes} $attrs
     * @param {angular.IWindowService} $window
     * @param {RidestoreCategoryService} RidestoreCategoryService
     */
-    constructor($log, $attrs, $window, RidestoreCategoryService) {
+    constructor($window, RidestoreCategoryService) {
       'ngInject';
       this.categoryService = RidestoreCategoryService;
-      this.log = $log;
-      this.attrs = $attrs;
       this.window = $window;
     }
     $onInit() {
-      /**
-       * @type {number}
-       */
-      this.categoryId = this.attrs.categoryId;
-      /**
-       * @type {RidestoreProduct[]}
-       */
-      this.products = [];
-
       this.categoryService.getCategory(this.categoryId)
         .then((response) => {
           /** fill object properties from response */
@@ -47,8 +37,12 @@ export const RidestoreProductsListComponent = {
 
           /** change the page title and description */
           this.window.document.title = response.category_info.meta_title;
-          this.window.document.querySelector('meta[name="description"]')
-            .setAttribute('content', response.category_info.meta_description);
+          const metaDescElement = this.window.document
+            .querySelector('meta[name="description"]');
+          if (metaDescElement) {
+            metaDescElement.setAttribute('content',
+              response.category_info.meta_description);
+          }
         });
     }
   }
