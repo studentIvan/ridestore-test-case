@@ -1,5 +1,7 @@
 # Ridestore javascript front-end test case
 
+CircleCI status: [![CircleCI](https://circleci.com/gh/studentIvan/ridestore-test-case.svg?style=svg)](https://circleci.com/gh/studentIvan/ridestore-test-case)
+
 ## Assignment goal and Description
 Create a single-page application in AngularJS (1.x) that displays a list of
 Ridestore Products.
