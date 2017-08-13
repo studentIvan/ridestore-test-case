@@ -9,10 +9,10 @@ describe('app component', () => {
       .component('app', AppComponent);
     angular.mock.module('app');
   });
-  it('should render hello world', angular.mock.inject(($rootScope, $compile) => {
+  it('should render Ridestore header', angular.mock.inject(($rootScope, $compile) => {
     const element = $compile('<app>Loading...</app>')($rootScope);
     $rootScope.$digest();
-    const h1 = element.find('h1');
-    expect(h1.html()).toEqual('Hello World!');
+    const navbarBrand = element.find('nav');
+    expect(navbarBrand.html()).toContain('Ridestore');
   }));
 });
