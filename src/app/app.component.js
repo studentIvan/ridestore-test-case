@@ -1,21 +1,19 @@
+import template from './app.html';
+
 /**
  * General application component
  */
 export const AppComponent = {
-  template: `
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Ridestore</a>
-      </nav>
-    </header>
-    <div class="container-fluid">
-      <ridestore-products-list ng-if="$ctrl.categoryId" category-id="$ctrl.categoryId"></ridestore-products-list>
-    </div>
-  `,
+  template,
   controller($log, $stateParams, $timeout) {
     'ngInject';
 
     $timeout(() => {
+      /**
+       * We using $timeout here to be sure that $stateParams has initialised
+       * The parseInt works here just in case to be sure that we working with number
+       * @type {number}
+       */
       this.categoryId = parseInt($stateParams.categoryId || 208, 10);
     });
   }
