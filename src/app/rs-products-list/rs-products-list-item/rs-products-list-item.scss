@@ -18,5 +18,15 @@
 
   &__price {
     font-weight: bold;
+    display: inline-block;
+
+    &--sale {
+      text-decoration: line-through;
+    }
+  }
+
+  &__sale-price {
+    font-weight: bold;
+    display: inline;
   }
 }
