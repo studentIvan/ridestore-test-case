@@ -20,13 +20,15 @@ export const RidestoreProductsListComponent = {
     *
     * @param {angular.ILogService} $log
     * @param {angular.IAttributes} $attrs
+    * @param {angular.IWindowService} $window
     * @param {RidestoreCategoryService} RidestoreCategoryService
     */
-    constructor($log, $attrs, RidestoreCategoryService) {
+    constructor($log, $attrs, $window, RidestoreCategoryService) {
       'ngInject';
       this.categoryService = RidestoreCategoryService;
       this.log = $log;
       this.attrs = $attrs;
+      this.window = $window;
     }
     $onInit() {
       /**
@@ -39,7 +41,15 @@ export const RidestoreProductsListComponent = {
       this.products = [];
 
       this.categoryService.getCategory(this.categoryId)
-        .then((response) => Object.assign(this, response));
+        .then((response) => {
+          /** fill object properties from response */
+          Object.assign(this, response);
+
+          /** change the page title and description */
+          this.window.document.title = response.category_info.meta_title;
+          this.window.document.querySelector('meta[name="description"]')
+            .setAttribute('content', response.category_info.meta_description);
+        });
     }
   }
 };
