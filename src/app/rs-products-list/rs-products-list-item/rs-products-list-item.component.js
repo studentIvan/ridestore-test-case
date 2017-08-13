@@ -6,6 +6,10 @@ export const RidestoreProductsListItemComponent = {
   bindings: {
     product: '<'
   },
+  /**
+   * Binding incoming product input data object
+   * to current controller object properties
+   */
   controller: class RidestoreProductsListItemComponent {
     $onInit() {
       Object.assign(this, this.product);
